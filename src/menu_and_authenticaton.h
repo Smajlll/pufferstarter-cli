@@ -6,9 +6,16 @@
 #include <string>
 #include <memory>
 #include "http_request.h"
+#include "get_server_info.h"
 
+// why the fuck did I code this to be in one header file, fuck me
+
+std::string authToken;
+std::string token;
 void reset();
 void getAuthKey();
+std::string ip;
+std::string serverIP;
 
 void menu() {
     char opt;
@@ -36,8 +43,8 @@ void menu() {
                     menu();
             }
         case '2':
-            std::cout << "Working on it!";
-            exit(0);
+            getServerInfo(serverIP, token);
+            break;
         case '3':
             std::cout << "Working on it!";
             exit(0);
@@ -55,6 +62,15 @@ void reset() {
     menu();
 }
 
+void saveAuthKey(std::string jsonAuthString) {
+
+    jsonAuthString.erase(0, 17);
+    jsonAuthString.erase(447, 67);
+
+    std::string authToken = jsonAuthString;
+    token = authToken;
+}
+
 void getAuthKey() {
     std::string id;
     std::string secret;
@@ -62,6 +78,7 @@ void getAuthKey() {
 
     std::cout << "What is the IP of your PufferPanel server? (example: http://panel.abc.xyz:8080)\n";
     std::cin >> ip;
+    serverIP = ip;
     std::cout << "\nWhat is the ClientID for your program? (You can get that at " << ip << "/account in the OAuth2 Clients section)\n";
     std::cin >> id;
     std::cout << "\nWhat is your Client Secret? (You can get that at " << ip << "/account in the OAuth2 Clients section. You can only see it once, after you create the client!)\n";
@@ -78,7 +95,9 @@ void getAuthKey() {
     const char* command = getAuthKeyCommand.c_str();
 
     std::string output = executeCommand(command);
-    std::cout << "Command output:\n" << output << std::endl;
+    saveAuthKey(output);
+
 }
+
 
 #endif //PUFFERSTARTER_CLI_MENU_AND_AUTH_H
