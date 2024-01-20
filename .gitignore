@@ -1,0 +1,9 @@
+# cmake stuff
+/cmake-build-debug
+
+# my stuff
+/build
+a.out
+
+# clion stuff
+.idea
