@@ -78,7 +78,7 @@ void getServerInfo(std::string ip, std::string token) {
     if (serverID.length() != 8) {
         std::cout << "This doesn't look like a valid ID, the ID should be 8 characters long.\nThe ID you entered is " << serverID << "\n";
         std::cout << "Returning to main menu\n";
-        menu();
+        menuReturn();
     } else {
         makeCommandStructures(serverID, ip, token);
     }

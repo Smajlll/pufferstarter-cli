@@ -55,7 +55,7 @@ void menu() {
             exit(0);
         default:
             std::cout << "\n This isn\'t a valid action, try again. :)\n\n";
-            menu();
+            menuReturn();
     }
 }
 
@@ -85,7 +85,7 @@ void saveAuthKey(std::string jsonAuthString) {
 void getAuthKeyParams() {
     void getAuthKey(std::string id, std::string secret, std::string ip);
 
-    std::cout << "What is the IP of your PufferPanel server? (example: http://panel.abc.xyz:8080)\n";
+    std::cout << "What is the IP of your PufferPanel host server? (example: panel.abc.xyz:8080)\n";
     std::cin >> ip;
     serverIP = ip;
     std::cout << "\nWhat is your ClientID? (You can get that at " << ip << "/account in the OAuth2 Clients section)\n";
