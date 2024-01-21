@@ -24,9 +24,10 @@ void menu() {
     char opt;
     char choice;
     std::cout << "\n1) Change your credentials\n";
-    std::cout << "2) Get the status and information of a server\n";
-    std::cout << "3) Change the status of the server\n";
-    std::cout << "4) Quit\n\n";
+    std::cout << "2) Get new authentication token using your credentials\n";
+    std::cout << "3) Get the status and information of a server\n";
+    std::cout << "4) Change the status of the server\n";
+    std::cout << "5) Quit\n\n";
     std::cout << "Choose an option: ";
     std::cin >> opt;
 
@@ -46,12 +47,15 @@ void menu() {
                     menuReturn();
             }
         case '2':
-            getServerInfo(serverIP, token);
+            menuReturn();
             break;
         case '3':
+            getServerInfo(serverIP, token);
+            break;
+        case '4':
             std::cout << "Working on it!";
             exit(0);
-        case '4':
+        case '5':
             exit(0);
         default:
             std::cout << "\n This isn\'t a valid action, try again. :)\n\n";
