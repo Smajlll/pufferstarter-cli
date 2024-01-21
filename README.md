@@ -6,7 +6,18 @@ An application written in C++, that will help you control your PufferPanel serve
 - A hosted PufferPanel instance
 
 ### Building instructions
-I will provide build instructions, after I bring the program to some functioning state.
+Right  now, I don't have any scripts for building, but, you can build PufferStarter by running these commands:
+
+``` bash
+git clone https://github.com/Smajlll/pufferstarter-cli.git
+cd pufferstarter-cli
+mkdir build
+cd build
+cmake ..
+cmake build
+chmod +x ./pufferstarter-cli
+./pufferstarter-cli
+```
 
 ### What works? And what doesn't?
 Right now, this works:
