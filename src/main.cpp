@@ -21,7 +21,7 @@ void ascii() {
 
 int main() {
     ascii();
-    getAuthKey();
+    getAuthKeyParams();
     menu();
 }
 
