@@ -48,22 +48,32 @@ void saveServerInfo(std::string jsonServerInfo, std::string id, std::string json
 
 
 void makeCommandStructures(std::string serverID, std::string ip, std::string token) {
+
     std::string getServerInfoCommand = "curl --request GET --url " + ip;
     getServerInfoCommand = getServerInfoCommand + "/api/servers/";
     getServerInfoCommand = getServerInfoCommand + serverID;
     getServerInfoCommand = getServerInfoCommand + " --header 'Authorization: Bearer ";
-    getServerInfoCommand = getServerInfoCommand + token + "\'";
+    getServerInfoCommand = getServerInfoCommand + token + "'";
+
     const char* command1 = getServerInfoCommand.c_str();
+
+    std::cout << command1;
 
     std::string output1 = executeCommand(command1);
 
     std::string getServerStatusCommand = "curl --request GET --url " + ip;
-    getServerStatusCommand = getServerStatusCommand + "/daemon/server/";
+    getServerStatusCommand = getServerStatusCommand + "/proxy/daemon/servers/";
     getServerStatusCommand = getServerStatusCommand + serverID;
     getServerStatusCommand = getServerStatusCommand + "/status";
     getServerStatusCommand = getServerStatusCommand + " --header 'Authorization: Bearer ";
-    getServerStatusCommand = getServerStatusCommand + token + "\'";
+    getServerStatusCommand = getServerStatusCommand + token + "'";
+    getServerStatusCommand = getServerStatusCommand + " --header 'Content-Type: application/json'";
+
+    std::cout << getServerStatusCommand;
+
     const char* command2 = getServerStatusCommand.c_str();
+
+    std::cout << command2;
 
     std::string output2 = executeCommand(command2);
 
@@ -74,6 +84,8 @@ void makeCommandStructures(std::string serverID, std::string ip, std::string tok
 void getServerInfo(std::string ip, std::string token) {
 
     std::string serverID;
+
+    std::cout << ip;
 
     std::cout << "Please, enter the ID of the server you want to get the information about.\n";
     std::cout << "(Server ID is the numbers and letters after " + ip + "/server/<this is the ID>\n";
