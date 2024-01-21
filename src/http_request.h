@@ -14,7 +14,7 @@
 #include <array>
 #include "menu_and_authenticaton.h"
 
-// don't ask me how I wrote this code, it works so why worry
+// don't ask me how I wrote this code, it compiles
 
 std::string executeCommand(const char* cmd) {
     std::array<char, 128> buffer;

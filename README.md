@@ -23,6 +23,7 @@ chmod +x ./pufferstarter-cli
 Right now, this works:
 - Basic auth
   - The app will get, and send the request to the server, it doesn't parse it or anything, just gets the full JSON returned and stores it in a variable
+- Listing the server information (id, name, port, status)
 
 What will work?:
   - The program will parse the JSON to get the raw token and use it in its requests
