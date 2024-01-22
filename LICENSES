@@ -1,0 +1,7 @@
+PufferStarter uses these opensource projects at its base:
+
+- Json for Modern C++ @ https://github.com/nlohmann/json
+Under its MIT Licence found here: https://github.com/nlohmann/json/blob/develop/LICENSE.MIT
+
+- PufferPanel and its API @ https://github.com/pufferpanel/pufferpanel
+Under its Apache License 2.0 found here: https://github.com/pufferpanel/pufferpanel/blob/v3/LICENSE
