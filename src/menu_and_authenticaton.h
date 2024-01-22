@@ -7,18 +7,20 @@
 #include <memory>
 #include "http_request.h"
 #include "get_server_info.h"
+#include "change_status.h"
 // why the fuck did I code this to be in one header file, fuck me
 
 std::string authToken;
-std::string token;
+
 void reset();
 void getAuthKey(std::string id, std::string secret);
 void menuReturn();
 std::string serverIP;
 void getAuthKeyParams();
-std::string id;
+extern std::string token;
+extern std::string id;
 std::string secret;
-std::string ip;
+extern std::string ip;
 
 void menu() {
     char opt;
@@ -53,8 +55,7 @@ void menu() {
             getServerInfo(serverIP, token);
             break;
         case '4':
-            std::cout << "Working on it!";
-            exit(0);
+            getStatusInfo(ip, token);
         case '5':
             exit(0);
         default:
@@ -119,9 +120,14 @@ void getAuthKey(std::string id, std::string secret, std::string ip) {
 
 void menuReturn() {
     void getAuthKey(std::string id, std::string secret, std::string ip);
+
     std::cout << "\nGetting you a fresh new token!\n";
     getAuthKey(id, secret, ip);
     menu();
+}
+
+void statusMenuReturn() {
+    menuReturn();
 }
 
 #endif //PUFFERSTARTER_CLI_MENU_AND_AUTH_H
