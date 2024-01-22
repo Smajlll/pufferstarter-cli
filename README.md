@@ -34,8 +34,6 @@ What I hope to implement in the future?:
 - List all the server available to you, as well as its id.
 - Saving your Client ID and Secret somewhere in a config file
 
-[![forthebadge](https://forthebadge.com/images/featured/featured-made-with-crayons.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/made-with-c-plus-plus.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/featured/featured-built-with-love.svg)](https://forthebadge.com)
-
-<img src="https://forthebadge.com/images/featured/featured-made-with-crayons.svg" alt="lol" width="200"/>
+<img src="https://forthebadge.com/images/featured/featured-made-with-crayons.svg" alt="Made With Crayons" width="300"/>
+<img src="https://forthebadge.com/images/badges/made-with-c-plus-plus.svg" alt="Made with C++" width="175"/>
+<img src="https://forthebadge.com/images/featured/featured-built-with-love.svg" alt="drawing" width="175"/>
