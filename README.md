@@ -8,21 +8,28 @@ An application written in C++, that will help you control your PufferPanel serve
 ### Building instructions
 Right  now, I don't have any scripts for building, but, you can build PufferStarter by running these commands:
 
-#### Compiling now works only for linux, i don't know why, i will try to fix it in the next commits, sorry :(
-
+Linux & other UNIX systems:
 ``` bash
 git clone https://github.com/Smajlll/pufferstarter-cli.git
 cd pufferstarter-cli
 mkdir build
 cd build
 cmake ..
-cmake build
-```
-then for Linux you also need to write these commands:
-```
+cmake --build .
 chmod +x ./pufferstarter-cli
 ./pufferstarter-cli
 ```
+
+Windows:
+``` bash
+git clone https://github.com/Smajlll/pufferstarter-cli.git
+cd pufferstarter-cli
+mkdir build
+cd build
+cmake ..
+cmake --build .
+```
+The .exe will be in the newly created Debug folder.
 
 ### What works? And what doesn't?
 Right now, this works:

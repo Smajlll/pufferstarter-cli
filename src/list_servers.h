@@ -10,6 +10,10 @@
 #include <memory>
 #include "menu_and_authenticaton.h"
 #include "../libs/json.hpp"
+#ifdef _WIN32
+#include <windows.h>
+#define sleep(x) Sleep((x) * 1000)
+#endif
 using json = nlohmann::json; // sue me
 std::string gotServerID;
 

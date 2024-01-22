@@ -5,6 +5,10 @@
 #ifndef PUFFERSTARTER_CLI_HTTP_REQUEST_H
 #define PUFFERSTARTER_CLI_HTTP_REQUEST_H
 
+#ifdef _WIN32
+#define popen _popen
+#define pclose _pclose
+#endif
 #include <iostream>
 #include <cstdio>
 #include <string>
@@ -13,6 +17,8 @@
 #include <stdexcept>
 #include <array>
 #include "menu_and_authenticaton.h"
+
+
 
 // don't ask me how I wrote this code, it compiles
 
