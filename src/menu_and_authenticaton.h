@@ -11,12 +11,13 @@
 // why the fuck did I code this to be in one header file, fuck me
 
 std::string authToken;
-extern std::string token;
+
 void reset();
 void getAuthKey(std::string id, std::string secret);
 void menuReturn();
 std::string serverIP;
 void getAuthKeyParams();
+extern std::string token;
 extern std::string id;
 std::string secret;
 extern std::string ip;
@@ -121,13 +122,12 @@ void menuReturn() {
     void getAuthKey(std::string id, std::string secret, std::string ip);
 
     std::cout << "\nGetting you a fresh new token!\n";
-
-    std::cout << "\n" << id;
-    std::cout << "\n" << secret;
-    std::cout << "\n" << ip;
-
     getAuthKey(id, secret, ip);
     menu();
+}
+
+void statusMenuReturn() {
+    menuReturn();
 }
 
 #endif //PUFFERSTARTER_CLI_MENU_AND_AUTH_H

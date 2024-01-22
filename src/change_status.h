@@ -12,11 +12,12 @@
 std::string ip;
 std::string token;
 std::string id;
+std::string sid;
 
 
-void stopServer(std::string id, std::string ip, std::string token) {
+void stopServer(std::string sid, std::string ip, std::string token) {
     std::cout << "Server is stopping";
-    std::string stopServerCommand = "curl -X POST -H \"Content-Type: application/json\" -H \"Authorization: Bearer " + token + "\" " + ip + "/daemon/server/" + id + "/stop -s";
+    std::string stopServerCommand = "curl -X POST -H \"Content-Type: application/json\" -H \"Authorization: Bearer " + token + "\" " + ip + "/daemon/server/" + sid + "/stop -s";
     const char* command = stopServerCommand.c_str();
     std::string output2 = executeCommand(command);
 
@@ -29,9 +30,9 @@ void stopServer(std::string id, std::string ip, std::string token) {
     }
 }
 
-void startServer(std::string id, std::string ip, std::string token) {
+void startServer(std::string sid, std::string ip, std::string token) {
     std::cout << "Server is starting";
-    std::string stopServerCommand = "curl -X POST -H \"Content-Type: application/json\" -H \"Authorization: Bearer " + token + "\" " + ip + "/daemon/server/" + id + "/start -s";
+    std::string stopServerCommand = "curl -X POST -H \"Content-Type: application/json\" -H \"Authorization: Bearer " + token + "\" " + ip + "/daemon/server/" + sid + "/start -s";
     const char* command = stopServerCommand.c_str();
     std::string output2 = executeCommand(command);
 
@@ -44,10 +45,40 @@ void startServer(std::string id, std::string ip, std::string token) {
     }
 }
 
+
+void killServer(std::string sid, std::string ip, std::string token) {
+
+    std::string killChoice;
+
+    std::cout <<"\nAre you sure?\nThis will kill your server without any saving, it will just kill its java process.\nDo this only if you are sure you need this, using the \"Stop the Server\" function is recommended\n\nType \"YES\" (without the quotation marks) to kill the server.\n";
+    std::cin >> killChoice;
+
+    if (killChoice == "YES") {
+
+        std::cout << "Killing your server\n";
+        std::string stopServerCommand = "curl -X POST -H \"Content-Type: application/json\" -H \"Authorization: Bearer " + token + "\" " + ip + "/daemon/server/" + sid + "/kill -s";
+        const char* command = stopServerCommand.c_str();
+        std::string output2 = executeCommand(command);
+
+        if (output2 != "") {
+            std::cout << "This didn't work. The server was NOT killed. Returning to the main menu! ";
+            menuReturn();
+        } else {
+            std::cout << "Server killed successfully, returning to the main menu!";
+            menuReturn();
+        }
+
+    } else {
+        std::cout << "Recieved something else then \"YES\", returning to menu";
+        menuReturn();
+    }
+
+}
+
 std::string getCurrentStatus() {
 
     std::string getStaticServerStatusCommand = "curl -X GET -H \"Content-Type: application/json\" -H \"Authorization: Bearer ";
-    std::string getServerStatusCommand = getStaticServerStatusCommand + token + "\" " + ip + "/daemon/server/" + id + "/status -s";
+    std::string getServerStatusCommand = getStaticServerStatusCommand + token + "\" " + ip + "/daemon/server/" + sid + "/status -s";
     const char* command2 = getServerStatusCommand.c_str();
     std::string output2 = executeCommand(command2);
 
@@ -78,34 +109,31 @@ int statusChangeChoice() {
     std::cout << "\nWhat do you want to do?";
     std::cout << "\n1) Stop the Server";
     std::cout << "\n2) Kill the Server";
-    std::cout << "\n3) Restart the server";
-    std::cout << "\n4) Start the server";
-    std::cout << "\n5) Rreturn to menu\n";
+    std::cout << "\n3) Start the server";
+    std::cout << "\n4) Rreturn to menu\n";
     std::cin >> statusChoice;
-    if (statusChoice == 5) {
+    if (statusChoice == 4) {
         std::cout << "\nReturning to menu!";
         menuReturn();
-    } else if (statusChoice == 1 || statusChoice == 2 || statusChoice == 3 || statusChoice == 4) {
+    } else if (statusChoice == 1 || statusChoice == 2 || statusChoice == 3) {
         return statusChoice;
     } else {
         std::cout << "\nThis doesn't look like a valid choice. Returning to menu\n";
+        // INFO: works here
         menuReturn();
     }
 }
 
-void constructCommand(std::string id, std::string ip, std::string token, int choice) {
+void constructCommand(std::string sid, std::string ip, std::string token, int choice) {
     switch (choice) {
         case 1:
-            stopServer(id, ip, token);
+            stopServer(sid, ip, token);
             break;
         case 2:
-            std::cout << "Server was killed";
+            killServer(sid, ip, token);
             break;
         case 3:
-            std::cout << "Server is restarting";
-            break;
-        case 4:
-            startServer(id, ip, token);
+            startServer(sid, ip, token);
             break;
         default:
             std::cout << "How the fuck did you get here. Try to reproduce this and report this @ https://github.com/Smajlll/pufferstarter-cli/issues\n";
@@ -129,7 +157,7 @@ void getStatusInfo(std::string serverIP, std::string authToken) {
         std::cout << "Returning to main menu\n";
         menuReturn();
     } else {
-        id = serverID;
+        sid = serverID;
         int statusChoice = statusChangeChoice();
         constructCommand(serverID, ip, token, statusChoice);
     }

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "menu_and_authenticaton.h"
+#include <unistd.h>
 
 void menu();
 void menuReturn();
@@ -13,6 +14,8 @@ void printServerInfo(std::string serverID, std::string serverName, std::string s
     std::cout << "Server Port: " << serverPort << "\n";
     std::cout << "Server ID: " << serverID << "\n";
     std::cout << "Online: " << serverStatus << "\n\n";
+    sleep(5);
+
     std::cout << "Nothing else to see here, returning to main menu!\n";
     menuReturn();
 }
