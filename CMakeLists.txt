@@ -8,4 +8,5 @@ add_executable(pufferstarter_cli src/main.cpp
         src/http_request.h
         src/get_server_info.h
         src/print_server_info.h
-        src/change_status.h)
+        src/change_status.h
+        src/list_servers.h)

@@ -9,6 +9,7 @@
 #include <memory>
 #include "menu_and_authenticaton.h"
 
+
 std::string ip;
 std::string token;
 std::string id;

@@ -3,7 +3,15 @@
 
 #include <iostream>
 #include "menu_and_authenticaton.h"
+#ifdef _WIN32
+#include <io.h>
+#else
 #include <unistd.h>
+#endif
+#ifdef _WIN32
+#include <windows.h>
+#define sleep(x) Sleep((x) * 1000)
+#endif
 
 void menu();
 void menuReturn();
