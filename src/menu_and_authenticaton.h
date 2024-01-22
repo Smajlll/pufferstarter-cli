@@ -8,6 +8,7 @@
 #include "http_request.h"
 #include "get_server_info.h"
 #include "change_status.h"
+#include "list_servers.h"
 // why the fuck did I code this to be in one header file, fuck me
 
 std::string authToken;
@@ -27,9 +28,10 @@ void menu() {
     char choice;
     std::cout << "\n1) Change your credentials\n";
     std::cout << "2) Get new authentication token using your credentials\n";
-    std::cout << "3) Get the status and information of a server\n";
-    std::cout << "4) Change the status of the server\n";
-    std::cout << "5) Quit\n\n";
+    std::cout << "3) Get all server names and IDs\n";
+    std::cout << "4) Get the status and information of a server\n";
+    std::cout << "5) Change the status of the server\n";
+    std::cout << "6) Quit\n\n";
     std::cout << "Choose an option: ";
     std::cin >> opt;
 
@@ -52,11 +54,14 @@ void menu() {
             menuReturn();
             break;
         case '3':
-            getServerInfo(serverIP, token);
+            getAllServers();
             break;
         case '4':
-            getStatusInfo(ip, token);
+            getServerInfo(serverIP, token);
+            break;
         case '5':
+            getStatusInfo(ip, token);
+        case '6':
             exit(0);
         default:
             std::cout << "\n This isn\'t a valid action, try again. :)\n\n";
