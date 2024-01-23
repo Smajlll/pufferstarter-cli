@@ -9,4 +9,6 @@ add_executable(pufferstarter_cli src/main.cpp
         src/get_server_info.h
         src/print_server_info.h
         src/change_status.h
-        src/list_servers.h)
+        src/list_servers.h
+        src/auth_menu.h
+        src/load_config_file.h)

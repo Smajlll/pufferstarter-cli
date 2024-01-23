@@ -22,6 +22,7 @@ extern std::string token;
 extern std::string id;
 std::string secret;
 extern std::string ip;
+void getAuthKeyParams();
 
 void menu() {
     char opt;
@@ -79,6 +80,8 @@ void reset() {
 
 void saveAuthKey(std::string jsonAuthString) {
 
+    void getAuthKeyParams();
+
     /*jsonAuthString.erase(0, 17);
     jsonAuthString.erase(447, 67);*/
     const char* findThis = ",";
@@ -88,8 +91,22 @@ void saveAuthKey(std::string jsonAuthString) {
     int cutFrom = tokenLenght - 1;
     int cutTo = fullLenght - cutFrom;
 
-    authToken = jsonAuthString.erase(cutFrom, cutTo);
-    token = authToken;
+    id = id;
+    secret = secret;
+    ip = ip;
+
+
+    if (jsonAuthString.length() > 20) {
+
+        std::cout << ip;
+
+        authToken = jsonAuthString.erase(cutFrom, cutTo);
+        token = authToken;
+    } else {
+        std::cout << "Something went wrong while getting your token, if you use a config file, check if all of your credentials and IP are set correctly, consult the documentation if needed.\nIf you entered them manualy at startup, you may have mistyped something, or you are missing a port after your IP.\nStarting the manual authentication process again.\n";
+        getAuthKeyParams();
+    }
+    menu();
 }
 
 void getAuthKeyParams() {
@@ -109,6 +126,10 @@ void getAuthKeyParams() {
 
 void getAuthKey(std::string id, std::string secret, std::string ip) {
 
+    ip = ip;
+    id = id;
+    secret = secret;
+
     std::string getAuthKeyCommand = "curl --request POST --url " + ip;
     getAuthKeyCommand = getAuthKeyCommand + "/oauth2/token";
     getAuthKeyCommand = getAuthKeyCommand + " --data grant_type=client_credentials --data client_id=";
@@ -127,12 +148,17 @@ void menuReturn() {
     void getAuthKey(std::string id, std::string secret, std::string ip);
 
     std::cout << "\nGetting you a fresh new token!\n";
+    id = id;
+    secret = secret;
+    ip = ip;
+
     getAuthKey(id, secret, ip);
-    menu();
 }
 
 void statusMenuReturn() {
     menuReturn();
 }
+
+
 
 #endif //PUFFERSTARTER_CLI_MENU_AND_AUTH_H
