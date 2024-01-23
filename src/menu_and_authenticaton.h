@@ -58,6 +58,8 @@ void menu() {
             getAllServers();
             break;
         case '4':
+            std::cout << ip << std::endl;
+            serverIP = ip;
             getServerInfo(serverIP, token);
             break;
         case '5':
@@ -91,14 +93,8 @@ void saveAuthKey(std::string jsonAuthString) {
     int cutFrom = tokenLenght - 1;
     int cutTo = fullLenght - cutFrom;
 
-    id = id;
-    secret = secret;
-    ip = ip;
-
 
     if (jsonAuthString.length() > 20) {
-
-        std::cout << ip;
 
         authToken = jsonAuthString.erase(cutFrom, cutTo);
         token = authToken;
@@ -126,9 +122,6 @@ void getAuthKeyParams() {
 
 void getAuthKey(std::string id, std::string secret, std::string ip) {
 
-    ip = ip;
-    id = id;
-    secret = secret;
 
     std::string getAuthKeyCommand = "curl --request POST --url " + ip;
     getAuthKeyCommand = getAuthKeyCommand + "/oauth2/token";
@@ -148,9 +141,6 @@ void menuReturn() {
     void getAuthKey(std::string id, std::string secret, std::string ip);
 
     std::cout << "\nGetting you a fresh new token!\n";
-    id = id;
-    secret = secret;
-    ip = ip;
 
     getAuthKey(id, secret, ip);
 }
@@ -159,6 +149,10 @@ void statusMenuReturn() {
     menuReturn();
 }
 
-
+void saveStringsFromConfig(std::string oauthID, std::string oauthSecret, std::string pufferIP) {
+    id = oauthID;
+    secret = oauthSecret;
+    ip = pufferIP;
+}
 
 #endif //PUFFERSTARTER_CLI_MENU_AND_AUTH_H

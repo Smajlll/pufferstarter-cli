@@ -53,6 +53,7 @@ void openConfig() {
             int secretLenght = secret.find(findThis);
             secret = secret.erase(secretLenght, 1);
 
+            saveStringsFromConfig(id, secret, ip);
             getAuthKey(id, secret, ip);
         }
 

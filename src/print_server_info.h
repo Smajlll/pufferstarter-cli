@@ -22,7 +22,7 @@ void printServerInfo(std::string serverID, std::string serverName, std::string s
     std::cout << "Server Port: " << serverPort << "\n";
     std::cout << "Server ID: " << serverID << "\n";
     std::cout << "Online: " << serverStatus << "\n\n";
-    sleep(5);
+    sleep(3);
 
     std::cout << "Nothing else to see here, returning to main menu!\n";
     menuReturn();

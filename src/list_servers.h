@@ -51,7 +51,7 @@ void getAllServers() {
         std::cout << "Report this @ https://github.com/smajlll/pufferstarter-cli/issues, returning to menu\n";
         menuReturn();
     }
-    sleep(5);
+    sleep(3);
     std::cout << "\nReturning to menu!";
     menuReturn();
 
