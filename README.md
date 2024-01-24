@@ -1,9 +1,25 @@
 # PufferStarter-cli
 An application written in C++, that will help you control your PufferPanel servers using your CLI. 
 
+(better docs are on its way :D)
+
 ### Dependencies
 - cURL
 - A hosted PufferPanel instance
+
+### Build dependencies
+Windows:
+- mingw-make
+- mingw-gcc
+- mingw-g++
+- cmake
+- git
+
+Linux:
+- cmake
+- gcc
+- g++
+- git
 
 ### Building instructions
 You can use the scripts in the root of the projects called `build.sh` and `build.ps1` respectively

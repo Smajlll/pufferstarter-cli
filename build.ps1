@@ -1,7 +1,7 @@
-rmdir -r .\build
+Remove-Item -r .\build
 mkdir build
-cd build
-cmake ..
+Set-Location build
+cmake .. -g "MinGW Makefiles"
 cmake --build .
-cd Debug
-echo "Your file is in this folder named 'pufferstarter_cli.exe'"
+Set-Location Debug
+Write-Output "Your file is in this folder named 'pufferstarter_cli.exe'"
