@@ -32,7 +32,7 @@ git clone https://github.com/Smajlll/pufferstarter-cli.git
 cd pufferstarter-cli
 mkdir build
 cd build
-cmake ..
+cmake .. -G "MinGW Makefiles"
 cmake --build .
 chmod +x ./pufferstarter-cli
 ./pufferstarter-cli
