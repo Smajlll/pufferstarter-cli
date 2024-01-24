@@ -1,7 +1,7 @@
 #include <iostream>
+#include <fstream>
 #include "menu_and_authenticaton.h"
-
-void ascii();
+#include "auth_menu.h"
 
 void ascii() {
     std::cout << R"(
@@ -20,8 +20,25 @@ void ascii() {
 }
 
 int main() {
+
+    std::string location;
+
+    #ifdef _WIN32
+        location = std::getenv("USERPROFILE");
+        location += "\\.pufferstarter\\config.conf";
+    #else
+        location = std::getenv("HOME");
+        location += "/.config/pufferstarter.conf";
+    #endif
+
+    std::ifstream file(location);
+    if (!file.good()) {
+        std::ofstream newFile(location);
+        newFile << "ip=\"\"" << std::endl << "id=\"\"" << std::endl << "secret=\"\"" << std::endl;
+    }
+
+
     ascii();
-    getAuthKeyParams();
-    menu();
+    authMenu();
 }
 
