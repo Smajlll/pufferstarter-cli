@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.25..3.27)
+cmake_minimum_required(VERSION 3.25..3.29)
 project(pufferstarter_cli)
 
 set(CMAKE_CXX_STANDARD 17)
