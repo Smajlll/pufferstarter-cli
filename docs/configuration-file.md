@@ -3,11 +3,9 @@ PufferStarter allows you to write a config file, so you don't have to write your
 
 ## Creating a config file
 There are 3 ways you can create a config file:
-1) By using the function to create the configuration file (recommended)
+1) Automatic Way (recommended)
    - Start PufferStarter
-   - At the Authentication Menu, select number 3 (create config file)
-   - If the config file isn't present it will create it, if it is, it will ask you if you want to rewrite it.
-   - The program will Quit
+   - After displaying the ASCII logo, your config file will be created.
    - Your config file is now present at `~/.config/PufferStarter.conf if you are on Linux`, or `%USERPROFILE%\.pufferstarter\PufferStarter.conf`
 2) By using the "Load my credentials from the config file" function
    - Start PufferStarter

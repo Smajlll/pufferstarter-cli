@@ -7,6 +7,8 @@
 #include <iostream>
 #include <string>
 #include <memory>
+#include <cstdio>
+#include <fstream>
 #include "menu_and_authenticaton.h"
 #include "load_config_file.h"
 
