@@ -58,7 +58,6 @@ void menu() {
             getAllServers();
             break;
         case '4':
-            std::cout << ip << std::endl;
             serverIP = ip;
             getServerInfo(serverIP, token);
             break;
@@ -99,7 +98,7 @@ void saveAuthKey(std::string jsonAuthString) {
         authToken = jsonAuthString.erase(cutFrom, cutTo);
         token = authToken;
     } else {
-        std::cout << "Something went wrong while getting your token, if you use a config file, check if all of your credentials and IP are set correctly, consult the documentation if needed.\nIf you entered them manualy at startup, you may have mistyped something, or you are missing a port after your IP.\nStarting the manual authentication process again.\n";
+        std::cout << "Something went wrong while getting your token, if you use a config file, check if all of your credentials and IP are set correctly, consult the documentation at https://docs.smoliicek.xyz/#/Configuration/configuration-file if needed.\nIf you entered them manualy at startup, you may have mistyped something, or you are missing a port after your IP.\nStarting the manual authentication process again.\n";
         getAuthKeyParams();
     }
     menu();

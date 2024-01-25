@@ -17,31 +17,31 @@ std::string sid;
 
 
 void stopServer(std::string sid, std::string ip, std::string token) {
-    std::cout << "Server is stopping";
+    std::cout << "Server is stopping\n";
     std::string stopServerCommand = "curl -X POST -H \"Content-Type: application/json\" -H \"Authorization: Bearer " + token + "\" " + ip + "/daemon/server/" + sid + "/stop -s";
     const char* command = stopServerCommand.c_str();
     std::string output2 = executeCommand(command);
 
     if (output2 != "") {
-        std::cout << "This didn't work. The server did NOT stop. Returning to the main menu! ";
+        std::cout << "This didn't work. The server did NOT stop. Returning to the main menu!\n";
         menuReturn();
     } else {
-        std::cout << "Server stopped successfully, returning to the main menu!";
+        std::cout << "Server stopped successfully, returning to the main menu!\n";
         menuReturn();
     }
 }
 
 void startServer(std::string sid, std::string ip, std::string token) {
-    std::cout << "Server is starting";
+    std::cout << "Server is starting\n";
     std::string stopServerCommand = "curl -X POST -H \"Content-Type: application/json\" -H \"Authorization: Bearer " + token + "\" " + ip + "/daemon/server/" + sid + "/start -s";
     const char* command = stopServerCommand.c_str();
     std::string output2 = executeCommand(command);
 
     if (output2 != "") {
-        std::cout << "This didn't work. The server did NOT start. Returning to the main menu! ";
+        std::cout << "This didn't work. The server did NOT start. Returning to the main menu!\n ";
         menuReturn();
     } else {
-        std::cout << "Server started successfully, returning to the main menu!";
+        std::cout << "Server started successfully, returning to the main menu!\n";
         menuReturn();
     }
 }
@@ -62,15 +62,15 @@ void killServer(std::string sid, std::string ip, std::string token) {
         std::string output2 = executeCommand(command);
 
         if (output2 != "") {
-            std::cout << "This didn't work. The server was NOT killed. Returning to the main menu! ";
+            std::cout << "This didn't work. The server was NOT killed. Returning to the main menu!\n";
             menuReturn();
         } else {
-            std::cout << "Server killed successfully, returning to the main menu!";
+            std::cout << "Server killed successfully, returning to the main menu!\n";
             menuReturn();
         }
 
     } else {
-        std::cout << "Recieved something else then \"YES\", returning to menu";
+        std::cout << "Recieved something else then \"YES\", returning to menu\n";
         menuReturn();
     }
 
@@ -138,7 +138,7 @@ void constructCommand(std::string sid, std::string ip, std::string token, int ch
             break;
         default:
             std::cout << "How the fuck did you get here. Try to reproduce this and report this @ https://github.com/Smajlll/pufferstarter-cli/issues\n";
-            std::cout << "Quitting! :(";
+            std::cout << "Quitting! :(\n";
             exit(1);
     }
 }
