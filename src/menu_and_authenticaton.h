@@ -58,7 +58,6 @@ void menu() {
             getAllServers();
             break;
         case '4':
-            std::cout << ip << std::endl;
             serverIP = ip;
             getServerInfo(serverIP, token);
             break;
