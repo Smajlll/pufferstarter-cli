@@ -1,7 +1,9 @@
 # Configuration File - PufferStarter Documentation
 PufferStarter allows you to write a config file, so you don't have to write your IP, OAuth Secret and Client ID every time you start it. 
 
-## Creating a config file
+!> First, get your [OAuth2 credentials](../Configuration/getcreds.md), then come back to configure PufferStarter.
+
+### Creating a config file
 There are 3 ways you can create a config file:
 1) Automatic Way (recommended)
    - Start PufferStarter
@@ -42,7 +44,7 @@ Instructions for Linux and macOS:
    ```
    - Save the file
 
-## Configuring the config file
+### Configuring the config file
 After you create the config file by using one of these 3 methods, you can start configuring it. We will go after each of these 3 parameters.
 1) `ip` parameter:
    - This parameter stores the IP of your PufferPanel server, it is the same address, you use to access PufferPanel in your browser, you do not need to include the `https://` or `http://`, but if you use some port to access PufferPanel, include that too.
@@ -58,7 +60,7 @@ After you create the config file by using one of these 3 methods, you can start 
    - Example:
      1) `secret="YzCWHZ5UN2PujfrzcE_SE-ZphM6dfxzk5Y06DiorrZ7TewgZ"` 
 
-## What if I want to log in with another credentials, when using a config file?
+### What if I want to log in with another credentials, when using a config file?
 It's pretty simple, and you have two ways of doing so:
 1) By using the `Enter my credentials manually` function on the Authentication Menu
    - Start PufferStarter
@@ -71,7 +73,7 @@ It's pretty simple, and you have two ways of doing so:
 
    ****This won't affect your config file.****
 
-## Future of config files
+### Future of config files
 I hope that in the future, PufferStarter will have multiple config files, from witch you could choose after you start it. 
 
 

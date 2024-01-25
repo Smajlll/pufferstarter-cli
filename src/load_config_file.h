@@ -36,7 +36,7 @@ void openConfig() {
         file.close();
 
         if (rawIP.length() <= 8 || rawID.length() <= 8 || rawSecret.length() <= 12) {
-            std::cout << "Something isn't right with your configuration, or it did not exist in the first place (in that case, it was created with the defaults).\nTry reading the documentation for proper usage of the config file.\nFalling back to manually entering credentials.\n";
+            std::cout << "Something isn't right with your configuration, or it did not exist in the first place (in that case, it was created with the defaults).\nTry reading the documentation at https://docs.smoliicek.xyz/#/Configuration/configuration-file for proper usage of the config file.\nFalling back to manually entering credentials.\n";
             getAuthKeyParams();
         } else {
             const char* findThis = "\"";

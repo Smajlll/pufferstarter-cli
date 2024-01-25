@@ -9,8 +9,8 @@ This guide requires you to have Administrator privileges on your user account (f
   - mingw-make
   - mingw-g++
   - mingw-gcc
-- git
-- cmake
+- [git](https://git-scm.com/)
+- [cmake](https://cmake.org/)
 
 !> Make sure you have all of these programs installed, and in your PATH variable on your system before continuing.
 
@@ -27,3 +27,6 @@ This guide requires you to have Administrator privileges on your user account (f
 - Generate CMake build files by running `cmake .. -G "MinGW Makefiles"`
 - Build the project by running `cmake --build .`
 - Your .exe file is now present at this location `.\Debug\pufferstartel_cli.exe`
+
+### And what next?
+You can start using the program right away. But I recommend you look into the [Config file](../Configuration/configuration-file.md), so you can make your user experience better.

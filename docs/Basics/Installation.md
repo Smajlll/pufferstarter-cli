@@ -16,8 +16,8 @@ After you download those files, continue with these instructions for you OS of c
 - You are all set, just start the file and you are good to go!
 #### For Linux and other UNIX systems:
 - Untar the file using `xd nevim`
-- Run this command `chmod +x ./pufferpanel_cli` so you can execute it
-- Start the `pufferpanel_cli` file you extracted, and you are all set!
+- Run this command `chmod +x ./pufferstarter_cli` so you can execute it
+- Start the `pufferstarter_cli` file you extracted, and you are all set!
 
 ### And what next?
 You can start using the program right away. But I recommend you look into the [Config file](../Configuration/configuration-file.md), so you can make your user experience better.

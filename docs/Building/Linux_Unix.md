@@ -26,3 +26,6 @@ This guide requires you to have sudo privileges on your user account (for instal
 - Build the project by running `cmake --build .`
 - Make the compiled file executable by running `chmod +x ./pufferstarter_cli`
 - Your compiled executable is now present at this location `./pufferstartel_cli`
+
+### And what next?
+You can start using the program right away. But I recommend you look into the [Config file](../Configuration/configuration-file.md), so you can make your user experience better.
