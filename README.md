@@ -1,53 +1,14 @@
 # PufferStarter-cli
 An application written in C++, that will help you control your PufferPanel servers using your CLI. 
 
-(better docs are on its way :D)
 
 ### Dependencies
 - cURL
 - A hosted PufferPanel instance
 
-### Build dependencies
-Windows:
-- mingw-make
-- mingw-gcc
-- mingw-g++
-- cmake
-- git
-
-Linux:
-- cmake
-- gcc
-- g++
-- git
-
 ### Building instructions
-You can use the scripts in the root of the projects called `build.sh` and `build.ps1` respectively
 
-Manual Building:
-
-Linux and other unix systems
-``` bash
-git clone https://github.com/Smajlll/pufferstarter-cli.git
-cd pufferstarter-cli
-mkdir build
-cd build
-cmake .. -G "MinGW Makefiles"
-cmake --build .
-chmod +x ./pufferstarter-cli
-./pufferstarter-cli
-```
-
-Windows:
-``` bash
-git clone https://github.com/Smajlll/pufferstarter-cli.git
-cd pufferstarter-cli
-mkdir build
-cd build
-cmake ..
-cmake --build .
-```
-The .exe will be in the newly created Debug folder.
+Check the [Windows Instructions](https://docs.smoliicek.xyz/#/Building/WIndows) & [Linux Instructions](https://docs.smoliicek.xyz/#/Building/Linux_Unix)
 
 ### What works? And what doesn't?
 Right now, this works:
@@ -57,10 +18,8 @@ Right now, this works:
 - Changing the status of the server 
 - Listing all the servers
 
+Also, check the [Feature tour](https://docs.smoliicek.xyz/#/Basics/FeatureTour)
 
-What I hope to implement in the future?:
-- List all the server available to you, as well as its id.
-- Saving your Client ID and Secret somewhere in a config file
 
 <img src="https://forthebadge.com/images/featured/featured-made-with-crayons.svg" alt="Made With Crayons" width="300"/>
 <img src="https://forthebadge.com/images/badges/made-with-c-plus-plus.svg" alt="Made with C++" width="175"/>
