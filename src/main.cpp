@@ -20,17 +20,9 @@ void ascii() {
     std::cout << "\nWelcome to PufferStarter!\n";
 }
 
-void interactive() {
+void interactive(std::string location) {
 
-    std::string location;
-
-    #ifdef _WIN32
-        location = std::getenv("USERPROFILE");
-        location += "\\.pufferstarter\\config.conf";
-    #else
-        location = std::getenv("HOME");
-        location += "/.config/pufferstarter.conf";
-    #endif
+    std::cout << "Hello";
 
     std::ifstream file(location);
     if (!file.good()) {
@@ -40,52 +32,78 @@ void interactive() {
 
 
     ascii();
-    authMenu();
+    authMenu(location);
 }
+
+bool isValidStatus(const std::string& status) {
+    std::set<std::string> validStatusValues = {"off", "start", "kill"};
+    return validStatusValues.count(status) > 0;
+}
+
 
 int main(int argc, const char *argv[]) {
     try {
+        std::string location;
+
+        #ifdef _WIN32
+            location = std::getenv("USERPROFILE");
+            location += "\\.pufferstarter\\config.conf";
+        #else
+            location = std::getenv("HOME");
+            location += "/.config/pufferstarter.conf";
+        #endif
+
+
         po::options_description gen("Generic options");
         gen.add_options()
-                ("help,?", po::value<std::string>(), "Print this message")
-                ("interactive", "Activate interactive mode");
+                ("help,?", "Print this message")
+                ("interactive,i", "Start the interactive mode");
+        po::options_description conf("Configuration options");
+        conf.add_options()
+                ("id", po::value<std::string>()->value_name("SERVER ID")->notifier([](const std::string& value){
+                    if (value.length() != 8) {
+                        throw std::invalid_argument("ID must be 8 characters long.");
+                    }
+                }), "Set the Server ID (length: 8)")
+                ("config,c", po::value<std::string>()->required()->value_name("PATH"),"Set a custom path to your Config File, rather then use the default.")
+                ("createConfig,r", "Creates the config at the default location");
         po::options_description desc("Allowed options");
         desc.add_options()
-                ("status", po::value<std::string>(), "Set status")
-                ("id", po::value<int>(), "Set ID")
-                ("secret", po::value<std::string>(), "Set secret")
-                ("oauthid", po::value<std::string>(), "Set OAuth ID")
-                ("ip", po::value<std::string>(), "Set IP");
+                ("setStatus,s", po::value<std::string>()->value_name("STATUS")->notifier([](const std::string& status) {
+                    if (!isValidStatus(status)) {
+                        throw std::invalid_argument("Invalid value for --status");
+                    }
+                }), "Set status must be one off these values: \noff \nstart \nkill")
+                ("listAll,l", "Lists all servers and IDs")
+                ("getInfo,g","Gets the info about a server (requires --id)");
+
 
         po::variables_map vm;
         po::store(po::parse_command_line(argc, argv, desc), vm);
         po::notify(vm);
 
         if (vm.count("interactive")) {
-            interactive();
+            interactive(location);
+            return 0;
         }
 
-        if (vm.count("help") || vm.count("?")) {
-            std::cout << "Status: " << vm["status"].as<std::string>() << std::endl;
+        if (vm.count("help") || vm.count("?") || vm.empty()) {
+            std::cout << "Usage: pufferstarter_cli [options]\n";
+            std::cout << "You NEED a config file to use options, if you (for some reason) do not want to create it, you need to run PufferStarter interactively by using \"-i\"\n";
+            std::cout << gen << std::endl << conf << std::endl << desc << std::endl;
         }
 
-        if (vm.count("status")) {
-            std::cout << "Status: " << vm["status"].as<std::string>() << std::endl;
-        }
-        if (vm.count("id")) {
-            std::cout << "ID: " << vm["id"].as<int>() << std::endl;
-        }
-        if (vm.count("secret")) {
-            std::cout << "Secret: " << vm["secret"].as<std::string>() << std::endl;
-        }
-        if (vm.count("oauthid")) {
-            std::cout << "OAuth ID: " << vm["oauthid"].as<std::string>() << std::endl;
-        }
-        if (vm.count("ip")) {
-            std::cout << "IP: " << vm["ip"].as<std::string>() << std::endl;
+        if (vm.count("listAll") || vm.count("l")) {
+            if (vm.count("config") || vm.count("c")) {
+                location = vm["config"].as<std::string>();
+            }
+            exit(0);
+
         }
     } catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << std::endl;
         return 1;
     }
+
+    return 0;
 }

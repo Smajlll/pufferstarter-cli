@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.25)
 project(pufferstarter_cli)
 
 set(CMAKE_CXX_STANDARD 17)
-set(BOOST_INCLUDE_LIBRARIES thread filesystem program_options)
+set(CMAKE_C_COMPILER_WORKS true)
 set(BOOST_ENABLE_CMAKE ON)
 
 include(FetchContent)
