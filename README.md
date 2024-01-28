@@ -18,7 +18,7 @@ Right now, this works:
 - Changing the status of the server 
 - Listing all the servers
 
-Also, check the [Feature tour](https://docs.smoliicek.xyz/#/Basics/FeatureTour)
+Also, check the [Feature tour - Interactive mode](https://docs.smoliicek.xyz/#/Basics/FeatureTourInteractive) & [Feature tour - Non-Interactive mode](https://docs.smoliicek.xyz/#/Basics/featuretournoint)
 
 
 <img src="https://forthebadge.com/images/featured/featured-made-with-crayons.svg" alt="Made With Crayons" width="300"/>
