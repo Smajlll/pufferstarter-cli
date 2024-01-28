@@ -3,4 +3,4 @@ mkdir build
 cd build
 cmake ..
 cmake --build .
-chmod +x ./pufferstarter_cli
+chmod +x ./pufferstarter-cli
