@@ -1,4 +1,4 @@
-# Feature Tour
+# Feature Tour - Interactive Mode
 
 ## Authentication menu
 ![img.png](../imgs/img.png)

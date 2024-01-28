@@ -55,14 +55,14 @@ void menu() {
             menuReturn();
             break;
         case '3':
-            getAllServers();
+            getAllServers(1);
             break;
         case '4':
             serverIP = ip;
-            getServerInfo(serverIP, token);
+            getServerInfo(serverIP, token, 1, "nothing");
             break;
         case '5':
-            getStatusInfo(ip, token);
+            getStatusInfo(ip, token, 1);
         case '6':
             exit(0);
         default:
@@ -101,7 +101,8 @@ void saveAuthKey(std::string jsonAuthString) {
         std::cout << "Something went wrong while getting your token, if you use a config file, check if all of your credentials and IP are set correctly, consult the documentation at https://docs.smoliicek.xyz/#/Configuration/configuration-file if needed.\nIf you entered them manualy at startup, you may have mistyped something, or you are missing a port after your IP.\nStarting the manual authentication process again.\n";
         getAuthKeyParams();
     }
-    menu();
+
+
 }
 
 void getAuthKeyParams() {
@@ -138,10 +139,8 @@ void getAuthKey(std::string id, std::string secret, std::string ip) {
 
 void menuReturn() {
     void getAuthKey(std::string id, std::string secret, std::string ip);
-
-    std::cout << "\nGetting you a fresh new token!\n";
-
     getAuthKey(id, secret, ip);
+    menu();
 }
 
 void statusMenuReturn() {

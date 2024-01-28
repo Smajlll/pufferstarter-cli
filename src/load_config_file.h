@@ -13,16 +13,7 @@ extern std::string id;
 extern std::string ip;
 
 
-void openConfig() {
-    std::string configFile;
-
-#ifdef _WIN32
-    configFile = std::getenv("USERPROFILE");
-    configFile += "\\.pufferstarter\\config.conf";
-#else
-        configFile = std::getenv("HOME");
-        configFile += "/.config/pufferstarter.conf";
-#endif
+void openConfig(std::string configFile) {
 
     // Open the file
     std::ifstream file(configFile);
@@ -65,20 +56,11 @@ void openConfig() {
 }
 
 
-void getConfigFile() {
-    std::string location;
-
-#ifdef _WIN32
-    location = std::getenv("USERPROFILE");
-    location += "\\.pufferstarter\\config.conf";
-#else
-        location = std::getenv("HOME");
-        location += "/.config/pufferstarter.conf";
-#endif
+void getConfigFile(std::string location) {
 
     std::ifstream file(location);
     if (file.good()) {
-        openConfig();
+        openConfig(location);
     } else {
         std::ofstream newFile(location);
         newFile << "ip=\"\"" << std::endl << "id=\"\"" << std::endl << "secret=\"\"" << std::endl;

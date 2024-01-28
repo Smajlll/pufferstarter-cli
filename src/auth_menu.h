@@ -12,7 +12,7 @@
 #include "menu_and_authenticaton.h"
 #include "load_config_file.h"
 
-void authMenu() {
+void authMenu(std::string location) {
         char authChoice;
         std::cout << "\n1) Load my credentials from the config file\n";
         std::cout << "2) Enter my credentials manually\n";
@@ -21,12 +21,14 @@ void authMenu() {
 
         switch (authChoice) {
             case '1':
-                getConfigFile();
+                getConfigFile(location);
+                break;
             case '2':
                 getAuthKeyParams();
+                break;
             default:
                 std::cout << "This doesn't look like an option, try again :)";
-                authMenu();
+                authMenu(location);
         }
 }
 

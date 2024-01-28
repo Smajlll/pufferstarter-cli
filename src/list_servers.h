@@ -20,7 +20,7 @@ std::string gotServerID;
 // I hate my life
 // this code is shitty af, i know
 
-void getAllServers() {
+void getAllServers(int fromMenu) {
     int serverNum = 0;
 
     std::string stopServerCommand = "curl -X GET -H \"Content-Type: application/json\" -H \"Authorization: Bearer " + token + "\" " + ip + "/api/servers -s";
@@ -44,17 +44,25 @@ void getAllServers() {
             }
         } else {
             std::cerr << "Invalid JSON format. Something went wrong while sending the request, or you just don't have any servers :). Returning to menu.\n";
-            menuReturn();
+            if (fromMenu == 1) {
+                menuReturn();
+            }
+            exit(1);
         }
     } catch (const std::exception& e) {
         std::cerr << "Error parsing JSON: " << e.what() << std::endl;
         std::cout << "Report this @ https://github.com/smajlll/pufferstarter-cli/issues, returning to menu\n";
-        menuReturn();
+        if (fromMenu == 1) {
+            menuReturn();
+        }
+        exit(1);
     }
     sleep(3);
     std::cout << "\nReturning to menu!";
-    menuReturn();
-
+    if (fromMenu == 1) {
+        menuReturn();
+    }
+    exit(0);
 }
 
 #endif //PUFFERSTARTER_CLI_LIST_SERVERS_H

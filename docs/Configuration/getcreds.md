@@ -13,5 +13,5 @@ A window like this will pop up, write down your Client ID and Client Secret, the
 You now created your own OAuth2 Credentials for use with PufferStarter!
 
 ### Where to continue?
-Try [Configuring](configuration-file.md) PufferStarter, so you don't have to enter your credentials every time you start it!
+Try [Configuring](../Configuration/configuration-file.md) PufferStarter, so you don't have to enter your credentials every time you start it!
 
