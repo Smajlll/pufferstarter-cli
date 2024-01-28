@@ -3,6 +3,7 @@
 #include "auth_menu.h"
 #include "load_config_file.h"
 #include "../libs/cxxopts.hpp"
+#include "see-console.h"
 
 
 void ascii() {
@@ -58,6 +59,7 @@ int main(int argc, char* argv[]) {
 
     options.add_options("Functions")
             ("s,setStatus","Set the status of the server\nRequires --id", cxxopts::value<std::string>(), "<start, stop, kill>")
+            ("console,c", "See the log of the server\nRequires --id")
             ("l,listAll", "Lists all servers and IDs")
             ("g,getInfo","Gets the info about a server\nRequires --id");
 
@@ -82,6 +84,17 @@ int main(int argc, char* argv[]) {
     if (result.count("listAll")) {
         openConfig(location);
         getAllServers(0);
+    }
+
+    if (result.count("console")) {
+        if (!result.count("id")) {
+            std::cout << "You need to specify --id to run this function.";
+            exit(1);
+        }
+
+        sid = result["id"].as<std::string>();
+        openConfig(location);
+        getConsoleInfo(ip, token, 0, sid);
     }
 
     if (result.count("getInfo")) {
