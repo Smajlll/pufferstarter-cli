@@ -2,6 +2,7 @@
 
   * [Installation](Basics/Installation.md)
   * [Feature Tour - Interactive Mode](Basics/FeatureTourInteractive)
+  * [Feature Tour - Non-Interactive Mode](Basics/featuretournoint.md)
 
 * Usage
 
