@@ -22,8 +22,10 @@ void authMenu(std::string location) {
         switch (authChoice) {
             case '1':
                 getConfigFile(location);
+                break;
             case '2':
                 getAuthKeyParams();
+                break;
             default:
                 std::cout << "This doesn't look like an option, try again :)";
                 authMenu(location);

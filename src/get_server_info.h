@@ -42,7 +42,7 @@ void saveServerInfo(std::string jsonServerInfo, std::string id, std::string json
     serverStatus = serverStatus.erase(cutFrom, 1);
 
     // pass this to the print function
-    printServerInfo(serverID, serverName ,serverPort, serverStatus);
+    printServerInfo(serverID, serverName ,serverPort, 1, serverStatus);
 
 }
 
@@ -67,22 +67,23 @@ void makeCommandStructures(std::string serverID, std::string ip, std::string tok
 }
 
 
-void getServerInfo(std::string ip, std::string token) {
+void getServerInfo(std::string ip, std::string token, int fromMenu, std::string serverID) {
 
+    if (fromMenu == 1) {
+        std::cout << "Please, enter the ID of the server you want to get the information about.\n";
+        std::cout << "(Server ID is the numbers and letters after " + ip + "/server/<this is the ID>\n";
+        std::cin >> serverID;
 
-    std::string serverID;
-
-    std::cout << "Please, enter the ID of the server you want to get the information about.\n";
-    std::cout << "(Server ID is the numbers and letters after " + ip + "/server/<this is the ID>\n";
-    std::cin >> serverID;
-
-    if (serverID.length() != 8) {
-        std::cout << "This doesn't look like a valid ID, the ID should be 8 characters long.\nThe ID you entered is " << serverID << "\n";
-        std::cout << "Returning to main menu\n";
-        menuReturn();
-    } else {
-        makeCommandStructures(serverID, ip, token);
+        if (serverID.length() != 8) {
+            std::cout << "This doesn't look like a valid ID, the ID should be 8 characters long.\nThe ID you entered is " << serverID << "\n";
+            std::cout << "Returning to main menu\n";
+                menuReturn();
+        } else {
+            makeCommandStructures(serverID, ip, token);
+        }
     }
+
+    makeCommandStructures(serverID, ip, token);
 
 }
 

@@ -16,7 +16,7 @@
 void menu();
 void menuReturn();
 
-void printServerInfo(std::string serverID, std::string serverName, std::string serverPort, std::string serverStatus = "Not defined") {
+void printServerInfo(std::string serverID, std::string serverName, std::string serverPort, int fromMenu, std::string serverStatus = "Not defined") {
     std::cout << "\n\nSERVER INFORMATION\n";
     std::cout << "Server Name: " << serverName << "\n";
     std::cout << "Server Port: " << serverPort << "\n";
@@ -24,7 +24,10 @@ void printServerInfo(std::string serverID, std::string serverName, std::string s
     std::cout << "Online: " << serverStatus << "\n\n";
     sleep(3);
 
-    std::cout << "Nothing else to see here, returning to main menu!\n";
+    std::cout << "Nothing else to see here!\n";
+    if (fromMenu == 0) {
+        exit(0);
+    }
     menuReturn();
 }
 
