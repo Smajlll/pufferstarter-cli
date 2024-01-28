@@ -1,7 +1,12 @@
 * Basics
 
   * [Installation](Basics/Installation.md)
-  * [Feature Tour](Basics/FeatureTour.md)
+  * [Feature Tour - Interactive Mode](Basics/FeatureTourInteractive)
+
+* Usage
+
+  * [Interactive Mode](Usage/interactive.md)
+  * [Non-Interactive Mode](Usage/noninteractive.md)
 
 * Building
 
