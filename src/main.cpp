@@ -67,6 +67,7 @@ int main(int argc, char* argv[]) {
         interactive(location);
     }
 
+
     if (result.count("createConfig")) {
         std::ifstream file(location);
         if (!file.good()) {
@@ -126,7 +127,11 @@ int main(int argc, char* argv[]) {
         return 0;
     }
 
-
+    if (result.count("id")) {
+        std::cout << "You can't run --id by itself.\n\n";
+        std::cout << options.help() << std::endl;
+        return 1;
+    }
 
     return 0;
 }

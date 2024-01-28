@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.25)
-project(pufferstarter_cli)
+project(pufferstarter-cli)
 
 set(CMAKE_CXX_STANDARD 17)
 
 
-add_executable(pufferstarter_cli src/main.cpp
+add_executable(pufferstarter-cli src/main.cpp
         src/menu_and_authenticaton.h
         src/http_request.h
         src/get_server_info.h

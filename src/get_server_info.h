@@ -11,7 +11,7 @@
 
 
 
-void saveServerInfo(std::string jsonServerInfo, std::string id, std::string jsonServerStatus) {
+void saveServerInfo(std::string jsonServerInfo, std::string id, std::string jsonServerStatus, int fromMenu) {
     // just get the id, name and port
     char findThis = '"';
 
@@ -42,12 +42,14 @@ void saveServerInfo(std::string jsonServerInfo, std::string id, std::string json
     serverStatus = serverStatus.erase(cutFrom, 1);
 
     // pass this to the print function
-    printServerInfo(serverID, serverName ,serverPort, 1, serverStatus);
-
+    if (fromMenu == 1) {
+        printServerInfo(serverID, serverName ,serverPort, 1, serverStatus);
+    }
+    printServerInfo(serverID, serverName ,serverPort, 0, serverStatus);
 }
 
 
-void makeCommandStructures(std::string serverID, std::string ip, std::string token) {
+void makeCommandStructures(std::string serverID, std::string ip, std::string token, int fromMenu) {
 
     // most of the stuff that stays the same are in the getStaticServerInfoCommand
     std::string getStaticServerInfoCommand = "curl -X GET -H \"Content-Type: application/json\" -H \"Authorization: Bearer ";
@@ -63,7 +65,7 @@ void makeCommandStructures(std::string serverID, std::string ip, std::string tok
     std::string output2 = executeCommand(command2);
 
 
-    saveServerInfo(output1, serverID, output2);
+    saveServerInfo(output1, serverID, output2, fromMenu);
 }
 
 
@@ -79,11 +81,11 @@ void getServerInfo(std::string ip, std::string token, int fromMenu, std::string 
             std::cout << "Returning to main menu\n";
                 menuReturn();
         } else {
-            makeCommandStructures(serverID, ip, token);
+            makeCommandStructures(serverID, ip, token, fromMenu);
         }
     }
 
-    makeCommandStructures(serverID, ip, token);
+    makeCommandStructures(serverID, ip, token, fromMenu);
 
 }
 

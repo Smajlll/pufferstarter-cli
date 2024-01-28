@@ -6,7 +6,7 @@ PufferStarter allows you to write a config file, so you don't have to write your
 ### Creating a config file
 There are 3 ways you can create a config file:
 1) Using a flag at startup
-   - Start PufferPanel with `-r` flag like this `pufferstarter_cli -r`
+   - Start PufferStarter with `-r` flag like this `pufferstarter_cli -r`
    - Your config file is now present at `~/.config/PufferStarter.conf if you are on Linux`, or `%USERPROFILE%\.pufferstarter\PufferStarter.conf`
 2) Automatic Way (recommended)
    - Start PufferStarter

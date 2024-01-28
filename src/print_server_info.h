@@ -25,10 +25,10 @@ void printServerInfo(std::string serverID, std::string serverName, std::string s
     sleep(3);
 
     std::cout << "Nothing else to see here!\n";
-    if (fromMenu == 0) {
-        exit(0);
+    if (fromMenu == 1) {
+        menuReturn();
     }
-    menuReturn();
+    exit(0);
 }
 
 
