@@ -1,6 +1,9 @@
 #ifndef PUFFERSTARTER_CLI_SEE_CONSOLE_H
 #define PUFFERSTARTER_CLI_SEE_CONSOLE_H
 
+#include <cstdio>
+#include <cstdlib>
+#include <fstream>
 #include <iostream>
 #include "menu_and_authenticaton.h"
 
@@ -8,10 +11,14 @@ void printConsole(std::string ip, std::string token, int fromMenu, std::string s
     std::cout << "Console output running through 'more'. Use 'Q' to quit\n";
 
     std::string getStaticConsoleCommand = "curl -X GET -H \"Content-Type: application/json\" -H \"Authorization: Bearer ";
-    std::string getServerConsoleCommand = getStaticConsoleCommand + token + "\" " + ip + "/daemon/server/" + serverID + "/console" + " -v | more";
+    std::string getServerConsoleCommand = getStaticConsoleCommand + token + "\" " + ip + "/daemon/server/" + serverID + "/console" + " -s";
     const char* command = getServerConsoleCommand.c_str();
-    std::string output = executeCommand(command);
-    std::cout << command;
+    std::string rawOutput = executeCommand(command);
+
+    std::string output = rawOutput.erase(0, 28);
+    int cutFrom = output.length() - 2;
+    output = output.erase(cutFrom, 2);
+    std::cout << output;
 
     if (fromMenu == 0) {
         exit(0);
