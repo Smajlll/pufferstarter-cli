@@ -8,17 +8,46 @@
 #include "menu_and_authenticaton.h"
 
 void printConsole(std::string ip, std::string token, int fromMenu, std::string serverID) {
+    const char* tempLocation;
+    std::string rawTempLocation;
+    
+    #ifdef _WIN32
+        rawTempLocation = std::getenv("TEMP");
+        rawTempLocation += "\\pufferstarter\\tempfile.tmp";
+        tempLocation = rawTempLocation.c_str();
+    #else
+        rawTempLocation = "/tmp/tempfile.tmp";
+        tempLocation = rawTempLocation.c_str();
+    #endif
+    
     std::cout << "Console output running through 'more'. Use 'Q' to quit\n";
 
     std::string getStaticConsoleCommand = "curl -X GET -H \"Content-Type: application/json\" -H \"Authorization: Bearer ";
     std::string getServerConsoleCommand = getStaticConsoleCommand + token + "\" " + ip + "/daemon/server/" + serverID + "/console" + " -s";
     const char* command = getServerConsoleCommand.c_str();
-    std::string rawOutput = executeCommand(command);
-
+    std::string output = executeCommand(command);
+    sleep(3);
+    
+    std::ofstream tempfile(tempLocation);
+    tempfile << output;
+    tempfile.close();
+    #ifdef _WIN32
+        std::string rawMoreCommand = "more " + rawTempLocation;
+        const char* moreCommand = rawMoreCommand.c_str();
+        std::system(moreCommand);
+    #else
+        std::string rawLessCommand = "less " + rawTempLocation;
+        const char* lessCommand = rawLessCommand.c_str();
+        std::system(lessCommand);
+    #endif
+    std::remove(tempLocation);
+    
+    
+    /* std::string rawOutput = executeCommand(command);
     std::string output = rawOutput.erase(0, 28);
     int cutFrom = output.length() - 2;
     output = output.erase(cutFrom, 2);
-    std::cout << output;
+    std::cout << output; */
 
     if (fromMenu == 0) {
         exit(0);
